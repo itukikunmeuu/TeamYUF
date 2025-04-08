@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8192157385316932592}
   - component: {fileID: 5180637399629918483}
   - component: {fileID: 4131021647233183116}
-  - component: {fileID: 9210541712982740963}
+  - component: {fileID: 7448932721221950092}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -106,7 +106,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9210541712982740963
+--- !u!114 &7448932721221950092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,6 +115,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4876836012313305162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbc74cb27478c9c49bfd679b6dbfda65, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f02766077c147544a52c89eb2077d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kMoveSpeed: 1
+  kPushMoveSpeed: 5
+  playerPrefab: {fileID: 4876836012313305162}

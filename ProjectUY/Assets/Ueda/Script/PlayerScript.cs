@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
     public float kMoveSpeed = 1.0f;     // 移動速度
     public float kPushMoveSpeed = 5.0f; // 左右の移動速度
     public GameObject playerPrefab; // プレイヤーのPrefab
+    ObstacleSpawner obsScript;      // スコアのスクリプト
     private int playerCount = 1;    // プレイヤー数
 
     // 移動処理
@@ -27,23 +28,58 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void AddCount(int amount)
     {
-        
+        // プレイヤーを増やす
+        if (amount > 0)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                Vector3 newPos = transform.position + new Vector3(0, 0, -0.5f * (transform.childCount + 1));
+                GameObject clone = Instantiate(playerPrefab, newPos, Quaternion.identity);
+                clone.transform.SetParent(this.transform);
+            }
+        }
+        // プレイヤー削除
+        else if (amount < 0)
+        {
+            int deleteCount = Mathf.Min(Mathf.Abs(amount), transform.childCount);
+            for (int i = 0; i < deleteCount; i++)
+            {
+                Transform lastChild = transform.GetChild(transform.childCount - 1);
+                Destroy(lastChild.gameObject);
+            }
+
+            if(transform.childCount <= 0)
+            {
+                playerCount = 0;
+            }
+        }
+
+        Debug.Log("人数:" + (transform.childCount + 1));
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
+        if (playerCount <= 0)
+        {
+            // ゲームオーバー
+            Debug.Log("ゲームオーバー");
+            return;
+        }
+
         Move(); // 移動処理
 
-        // TODO:とりあえずプレイヤー増殖
-        if(Input.GetKey(KeyCode.Space))
+        // ObstacleSpawner.csからスコアを参照
+        //int amount = obsScript.leftValue;
+
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            Vector3 newPos = transform.position + new Vector3(0, 0, -0.5f * playerCount);
-            Instantiate(playerPrefab, newPos, transform.rotation);
-            playerCount++;
+            AddCount(10);
+        }
+        else if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            AddCount(-10);
         }
     }
 }
