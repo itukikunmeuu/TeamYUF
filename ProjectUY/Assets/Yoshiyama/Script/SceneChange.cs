@@ -12,11 +12,17 @@ public class SceneChange : MonoBehaviour
     //現在の状態遷移を表す整数(0,1,2)
     private int currentState = 0;
 
+    // Rankingスクリプトのインスタンス
+    private Ranking ranking;
+
     // Start is called before the first frame update
     void Start()
     {
         //初期状態の設定
         UpdateState();
+
+        // Rankingスクリプトのインスタンスを取得
+        ranking = FindObjectOfType<Ranking>();
     }
 
     // Update is called once per frame
@@ -46,16 +52,19 @@ public class SceneChange : MonoBehaviour
                 TitleScene.SetActive(true);
                 GameScene.SetActive(false);
                 EndScene.SetActive(false);
+                if (ranking != null) ranking.Clear = false;
                 break;
             case 1:
                 TitleScene.SetActive(false);
                 GameScene.SetActive(true);
                 EndScene.SetActive(false);
+                if (ranking != null) ranking.Clear = false;
                 break;
             case 2:
                 TitleScene.SetActive(false);
                 GameScene.SetActive(false);
                 EndScene.SetActive(true);
+                if (ranking != null) ranking.Clear = true;
                 break;
         }
     }
