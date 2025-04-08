@@ -6,10 +6,10 @@ using UnityEngine.UIElements;
 public class PlayerScript : MonoBehaviour
 {
     public float kMoveSpeed = 1.0f;     // 移動速度
-    public float kPushMoveSpeed = 5.0f; // 左右の移動速度
-    public GameObject playerPrefab; // プレイヤーのPrefab
-    ObstacleSpawner obsScript;      // スコアのスクリプト
-    private int playerCount = 1;    // プレイヤー数
+    public float kPushMoveSpeed = 4.0f; // 左右の移動速度
+    public int playerCount { get; private set; } = 1;  // プレイヤーの数
+    public GameObject playerPrefab;     // プレイヤーのPrefab
+    private ObstacleSpawner obsScript;  // スコアのスクリプト
 
     // 移動処理
     private void Move()
@@ -30,6 +30,8 @@ public class PlayerScript : MonoBehaviour
 
     public void AddCount(int amount)
     {
+        playerCount += amount;
+
         // プレイヤーを増やす
         if (amount > 0)
         {
@@ -75,11 +77,11 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            AddCount(10);
+            AddCount(1);
         }
         else if(Input.GetKey(KeyCode.LeftArrow))
         {
-            AddCount(-10);
+            AddCount(-1);
         }
     }
 }
