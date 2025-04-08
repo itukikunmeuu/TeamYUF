@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    public void ChangeButton()
+    // シーン遷移先のシーン名を指定
+    public string sceneName;
+
+    void Update()
     {
-        Debug.Log("ボタン押した");
-        SceneManager.LoadScene("Ueda/ClearScene"); // 次シーンに移行
+        // 任意のボタンが押された場合にシーン遷移を行う
+        if (Input.GetKeyDown(KeyCode.Space))  // 任意のキーが押されたとき
+        {
+            // シーン遷移
+            SceneManager.LoadScene(sceneName);
+        }
     }
 }
