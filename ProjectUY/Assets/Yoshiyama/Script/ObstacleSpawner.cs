@@ -3,11 +3,11 @@ using UnityEngine.UI; // UI Text を使う場合
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField] GameObject obstaclePrefab;  // 障害物のプレハブ
-    [SerializeField] GameObject midPrefab;      // midプレハブ
-    [SerializeField] int numberOfObstacles = 10; // 増やす障害物数
-    [SerializeField] float spacingZ = 15f;      // 奥行き間隔
-    [SerializeField] float spacingX = 1.5f;     // 横の間隔（狭くする）
+    [SerializeField] GameObject obstaclePrefab;                     // 障害物のプレハブ
+    [SerializeField] GameObject midPrefab;                          // midプレハブ
+    [SerializeField] int        numberOfObstacles = 10;             // 増やす障害物数
+    [SerializeField] float      spacingZ = 15f;                     // 奥行き間隔
+    [SerializeField] float      spacingX = 1.5f;                    // 横の間隔（狭くする）
 
     private void Start()
     {
@@ -19,7 +19,7 @@ public class ObstacleSpawner : MonoBehaviour
             float zPos = i * spacingZ;
 
             // 左右に2つの障害物を配置
-            int leftValue = Random.Range(-10, 11);  // 左側のランダム値
+            int leftValue  = Random.Range(-10, 11);  // 左側のランダム値
             int rightValue = Random.Range(-10, 11); // 右側のランダム値
 
             // 左右の障害物を生成
