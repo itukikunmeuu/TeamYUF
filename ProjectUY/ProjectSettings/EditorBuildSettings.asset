@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Ueda/Scenes/TitleScene.unity
     guid: e05abf39a26fac047b49e1e884983475
   - enabled: 1
+    path: Assets/Yoshiyama/YoshiyamaScene.unity
+    guid: 4ce4e191f0d61ea4b9479e01a02875fb
+  - enabled: 1
     path: Assets/Ueda/Scenes/ClearScene.unity
     guid: 526f42d5c64d9dd44912613039df4315
   m_configObjects: {}
