@@ -12,6 +12,15 @@ public class PlayerScript : MonoBehaviour
     public GameObject playerPrefab;     // プレイヤーのPrefab
     private ObstacleSpawner obsScript;  // スコアのスクリプト
 
+    // 初期位置
+    private Vector3 initialPosition;
+
+    private void Awake()
+    {
+        // 初期位置を保存
+        initialPosition = transform.position;
+    }
+
     // 移動処理
     private void Move()
     {
@@ -53,7 +62,7 @@ public class PlayerScript : MonoBehaviour
                 Destroy(lastChild.gameObject);
             }
 
-            if(transform.childCount <= 0)
+            if (transform.childCount <= 0)
             {
                 playerCount = 0;
             }
@@ -62,13 +71,29 @@ public class PlayerScript : MonoBehaviour
         Debug.Log("人数:" + (transform.childCount + 1));
     }
 
+    public void InitializePlayer()
+    {
+        // プレイヤーの位置を初期位置にリセット
+        transform.position = initialPosition;
+
+        // プレイヤーの数を初期化
+        playerCount = 1;
+
+        // 子オブジェクトを全て削除
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        Debug.Log("プレイヤーが初期化されました。");
+    }
+
     void FixedUpdate()
     {
         if (playerCount <= 0)
         {
             // ゲームオーバー
             Debug.Log("ゲームオーバー");
-            SceneManager.LoadScene("UedaScene");
             return;
         }
 
