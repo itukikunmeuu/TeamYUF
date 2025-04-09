@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerScript : MonoBehaviour
@@ -67,21 +68,10 @@ public class PlayerScript : MonoBehaviour
         {
             // ゲームオーバー
             Debug.Log("ゲームオーバー");
+            SceneManager.LoadScene("UedaScene");
             return;
         }
 
         Move(); // 移動処理
-
-        // ObstacleSpawner.csからスコアを参照
-        //int amount = obsScript.leftValue;
-
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            AddCount(1);
-        }
-        else if(Input.GetKey(KeyCode.LeftArrow))
-        {
-            AddCount(-1);
-        }
     }
 }
