@@ -118,5 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f02766077c147544a52c89eb2077d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kMoveSpeed: 1
-  kPushMoveSpeed: 5
+  kMoveSpeed: 5
+  kPushMoveSpeed: 4
