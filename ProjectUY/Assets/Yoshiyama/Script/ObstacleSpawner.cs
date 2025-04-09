@@ -5,23 +5,29 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] GameObject obstaclePrefab;                     // 障害物のプレハブ
     [SerializeField] GameObject midPrefab;                          // midプレハブ
-    [SerializeField] int        numberOfObstacles = 10;             // 増やす障害物数
-    [SerializeField] float      spacingZ = 15f;                     // 奥行き間隔
-    [SerializeField] float      spacingX = 1.5f;                    // 横の間隔（狭くする）
+    [SerializeField] int numberOfObstacles = 10;             // 増やす障害物数
+    [SerializeField] float spacingZ = 15f;                     // 奥行き間隔
+    [SerializeField] float spacingX = 1.5f;                    // 横の間隔（狭くする）
     [SerializeField] public int leftValue = 0;
     [SerializeField] public int rightValue = 0;
 
     private void Start()
     {
+        // 初期化関数を呼び出す
+        InitializeObstacles();
+    }
+
+    public void InitializeObstacles()
+    {
         // midプレハブを0の位置に配置
         CreateMidObstacle(Vector3.zero);
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < numberOfObstacles; i++)
         {
             float zPos = i * spacingZ;
 
             // 左右に2つの障害物を配置
-            leftValue  = Random.Range(-10, 11);  // 左側のランダム値
+            leftValue = Random.Range(-10, 11);  // 左側のランダム値
             rightValue = Random.Range(-10, 11); // 右側のランダム値
 
             // 左右の障害物を生成

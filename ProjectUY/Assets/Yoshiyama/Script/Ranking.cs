@@ -34,10 +34,22 @@ public class Ranking : MonoBehaviour
 
     private Coroutine rankingCoroutine;
 
+    // PlayerScriptのインスタンス
+    private PlayerScript playerScript;
+
     void Start()
     {
         // 初期化
         ResetRankingDisplay();
+
+        // PlayerScriptのインスタンスを取得
+        playerScript = FindObjectOfType<PlayerScript>();
+
+        // PlayerScriptのplayerCountをscoreに設定
+        if (playerScript != null)
+        {
+            score = playerScript.playerCount;
+        }
     }
 
     void Update()

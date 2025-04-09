@@ -135,7 +135,9 @@ GameObject:
   - component: {fileID: 86599126}
   - component: {fileID: 86599125}
   - component: {fileID: 86599124}
+  - component: {fileID: 86599129}
   - component: {fileID: 86599128}
+  - component: {fileID: 86599130}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -238,11 +240,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 86599123}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f922578f9bdb8b34d896f142895c413f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f02766077c147544a52c89eb2077d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 10
-  moveSpeed: 5
+  kMoveSpeed: 5
+  kPushMoveSpeed: 3
+--- !u!114 &86599129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86599123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbc74cb27478c9c49bfd679b6dbfda65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kMoveSpeed: 5
+  kPushMoveSpeed: 3
+  playerPrefab: {fileID: 86599123}
+--- !u!54 &86599130
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86599123}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &96848001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &940747467
 Transform:
   m_ObjectHideFlags: 0
@@ -1511,7 +1555,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bf844587a90db4e8cfe8bb969de8ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0
+  leftValue: 0
+  rightValue: 0
 --- !u!64 &1108137171
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1809,7 +1854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1191049237
 Transform:
   m_ObjectHideFlags: 0
