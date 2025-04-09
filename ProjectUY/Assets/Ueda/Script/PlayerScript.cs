@@ -38,7 +38,13 @@ public class PlayerScript : MonoBehaviour
         {
             for (int i = 0; i < amount; i++)
             {
-                Vector3 newPos = transform.position + new Vector3(0, 0, -0.5f * (transform.childCount + 1));
+                // 出現位置をランダムに決定
+                float xOffset = Random.Range(-1.0f, 1.0f);
+                float zOffset = Random.Range(-0.5f, -0.1f);
+                zOffset += -0.5f * (transform.childCount + 1);
+                Vector3 newPos = transform.position + new Vector3(xOffset, 0, zOffset);
+
+                // プレイヤーのPrefabを生成
                 GameObject clone = Instantiate(playerPrefab, newPos, Quaternion.identity);
                 clone.transform.SetParent(this.transform);
             }
