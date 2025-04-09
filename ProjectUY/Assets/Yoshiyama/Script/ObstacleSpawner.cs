@@ -8,6 +8,8 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] int        numberOfObstacles = 10;             // 増やす障害物数
     [SerializeField] float      spacingZ = 15f;                     // 奥行き間隔
     [SerializeField] float      spacingX = 1.5f;                    // 横の間隔（狭くする）
+    [SerializeField] public int leftValue = 0;
+    [SerializeField] public int rightValue = 0;
 
     private void Start()
     {
@@ -19,8 +21,8 @@ public class ObstacleSpawner : MonoBehaviour
             float zPos = i * spacingZ;
 
             // 左右に2つの障害物を配置
-            int leftValue  = Random.Range(-10, 11);  // 左側のランダム値
-            int rightValue = Random.Range(-10, 11); // 右側のランダム値
+            leftValue  = Random.Range(-10, 11);  // 左側のランダム値
+            rightValue = Random.Range(-10, 11); // 右側のランダム値
 
             // 左右の障害物を生成
             CreateObstacle(new Vector3(-2.0f, 0.5f, zPos), leftValue);  // 左側
