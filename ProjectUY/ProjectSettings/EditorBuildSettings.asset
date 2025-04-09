@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Ueda/Scenes/ClearScene.unity
     guid: 526f42d5c64d9dd44912613039df4315
+  - enabled: 1
+    path: Assets/Ueda/Scenes/UedaScene.unity
+    guid: 28e2c59966bef9942bafaa27ca7c3fca
+  - enabled: 1
+    path: Assets/Ueda/Scenes/Ueda2Scene.unity
+    guid: 98f709360c9cdf043a572de08412aee3
   m_configObjects: {}

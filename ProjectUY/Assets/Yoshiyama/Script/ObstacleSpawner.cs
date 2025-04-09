@@ -35,6 +35,13 @@ public class ObstacleSpawner : MonoBehaviour
         // プレハブを生成
         GameObject obj = Instantiate(obstaclePrefab, position, Quaternion.identity);
 
+        Obstacle obstacleScript = obj.GetComponent<Obstacle>();
+        if (obstacleScript != null)
+        {
+            obstacleScript.leftValue = leftValue;
+            obstacleScript.rightValue = rightValue;
+        }
+
         // プレハブ内のTextコンポーネントを取得
         Text obstacleText = obj.GetComponentInChildren<Text>();
 
