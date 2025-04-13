@@ -18,7 +18,7 @@ public class SceneChange : MonoBehaviour
     // PlayerScriptのインスタンス
     private PlayerScript playerScript;
 
-    // cameraのインスタンス
+    // Cameraスクリプトのインスタンス
     private Camera cameraScript;
 
     // ObstacleSpawnerのインスタンス
@@ -33,63 +33,35 @@ public class SceneChange : MonoBehaviour
         //初期状態の設定
         UpdateState();
 
-        // Rankingスクリプトのインスタンスを取得
-        ranking = FindObjectOfType<Ranking>();
-
-        // Playerオブジェクトを検索してPlayerScriptのインスタンスを取得
      
-
-      
-        
-
-        // デバッグログを追加してインスタンスが取得されているか確認
-        if (ranking != null)
-        {
-            Debug.Log("Rankingスクリプトのインスタンスが取得されました。");
-        }
-        else
-        {
-            Debug.LogWarning("Rankingスクリプトのインスタンスが取得されませんでした。");
-        }
-
-        if (playerScript != null)
-        {
-            Debug.Log("PlayerScriptのインスタンスが取得されました。");
-        }
-        else
-        {
-            Debug.LogWarning("PlayerScriptのインスタンスが取得されませんでした。");
-        }
-
-        if (obstacleSpawner != null)
-        {
-            Debug.Log("ObstacleSpawnerのインスタンスが取得されました。");
-        }
-        else
-        {
-            Debug.LogWarning("ObstacleSpawnerのインスタンスが取得されませんでした。");
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        // Rankingスクリプトのインスタンスを取得
+        ranking = FindObjectOfType<Ranking>();
+
+        // Playerオブジェクトを検索してPlayerScriptのインスタンスを取得
         GameObject playerObject = GameObject.Find(playerObjectName);
         if (playerObject != null)
         {
             playerScript = playerObject.GetComponent<PlayerScript>();
         }
+
+        // ObstacleSpawnerのインスタンスを取得
+        obstacleSpawner = FindObjectOfType<ObstacleSpawner>();
+
+        // Cameraスクリプトのインスタンスを取得
+        cameraScript = FindObjectOfType<Camera>();
+
         // プレイヤーのZ座標が150を超えるか、playerCountが0以下の場合にcurrentStateを2に変更
         if (playerScript != null && (playerScript.transform.position.z > 150 || playerScript.playerCount <= 0))
         {
             currentState = 2;
             UpdateState();
         }
-        // ObstacleSpawnerのインスタンスを取得
-        obstacleSpawner = FindObjectOfType<ObstacleSpawner>();
-
-        // cameraのインスタンスを取得
-        cameraScript = FindObjectOfType<Camera>();
 
         //Space押されたら状態を遷移する
         if (Input.GetKeyDown(KeyCode.Space))
@@ -123,7 +95,7 @@ public class SceneChange : MonoBehaviour
                 EndScene.SetActive(false);
                 if (ranking != null) ranking.Clear = false;
 
-                // PlayerScriptとObstacleSpawnerの初期化処理を呼び出す
+                // PlayerScriptとObstacleSpawnerとCameraの初期化処理を呼び出す
                 if (playerScript != null)
                 {
                     playerScript.InitializePlayer();
@@ -132,7 +104,7 @@ public class SceneChange : MonoBehaviour
                 {
                     obstacleSpawner.InitializeObstacles();
                 }
-                if(cameraScript != null)
+                if (cameraScript != null)
                 {
                     cameraScript.MoveToInitialPosition();
                 }
